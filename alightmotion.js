@@ -1,8 +1,18 @@
+// Store the response body for inspection
+var responseBody = $response.body;
+
+// Log the response body for debugging (if logging is available in your environment)
+if (typeof log === 'function') {
+    log(responseBody); // Replace with your logging function if available
+}
+
+// Attempt to parse the response body
+var objc;
 try {
-    var objc = JSON.parse($response.body);
+    objc = JSON.parse(responseBody);
 } catch (e) {
-    // Instead of console.error, you can use a simple log or ignore the error
-    // For example, you can set objc to a default value or log to a custom logging function if available
+    // Handle JSON parsing error
+    // You can set objc to a default value or handle the error as needed
     objc = {
         "result": {
             "result": "error",
