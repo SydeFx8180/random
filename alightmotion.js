@@ -1,8 +1,8 @@
 try {
     var objc = JSON.parse($response.body);
 } catch (e) {
-    console.error("Failed to parse JSON:", e);
-    // Handle the error, e.g., set objc to a default value or return an error response
+    // Instead of console.error, you can use a simple log or ignore the error
+    // For example, you can set objc to a default value or log to a custom logging function if available
     objc = {
         "result": {
             "result": "error",
@@ -11,6 +11,7 @@ try {
     };
 }
 
+// Define your desired object structure
 objc = {
     "result": {
         "result": "success",
@@ -45,4 +46,5 @@ objc = {
     }
 };
 
+// Send the response back
 $done({ body: JSON.stringify(objc) });
