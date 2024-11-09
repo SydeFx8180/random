@@ -1,22 +1,23 @@
 // Store the response body for inspection
 var responseBody = $response.body;
 
-// Log the response body for debugging (if logging is available in your environment)
-if (typeof log === 'function') {
-    log(responseBody); // Replace with your logging function if available
-}
-
 // Attempt to parse the response body
 var objc;
 try {
+    // Log the response body for debugging purposes
+    // You may need to replace this with a suitable logging mechanism if available
+    if (typeof log === 'function') {
+        log(responseBody); // Replace with your logging function if available
+    }
+
+    // Attempt to parse the response body
     objc = JSON.parse(responseBody);
 } catch (e) {
     // Handle JSON parsing error
-    // You can set objc to a default value or handle the error as needed
     objc = {
         "result": {
             "result": "error",
-            "message": "Invalid JSON response"
+            "message": "Invalid JSON response: " + responseBody // Include the response for debugging
         }
     };
 }
